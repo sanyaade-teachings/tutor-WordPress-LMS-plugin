@@ -7,7 +7,7 @@
 		"node": ">=14.17.5"
 	},
 	"scripts": {
-		"build": "composer install --no-dev && webpack --env=build --mode=production && npm run gulp-build",
+		"build": "composer install --no-dev && webpack --env=build --mode=production && npm run tutor-droip && npm run gulp-build",
 		"build-dev": "webpack --mode=development && npm run gulp-build-dev",
 		"gulp-build": "npm run rm-lang && _GULP_ENV='build' gulp build",
 		"gulp-build-dev": "npm run rm-lang && gulp build",
@@ -19,7 +19,8 @@
 		"watch": "concurrently \"npm run css-watch\" \"npm run js-watch\"",
 		"no-docz-watch": "npm run build-dev && concurrently \"npm run css-watch\" \"npm run js-watch\"",
 		"lib-watch": "concurrently \"npm run css-watch\" \"npm run js-watch\" \"npm run docz-watch\"",
-		"rm-lang": "rm ./languages/tutor.pot || echo \"No tutor pot yet\""
+		"rm-lang": "rm ./languages/tutor.pot || echo \"No tutor pot yet\"",
+		"tutor-droip": "cd tutor-droip && npm run build && cp -r dist/* ../tutor-droip"
 	},
 	"keywords": [
 		"lms",
