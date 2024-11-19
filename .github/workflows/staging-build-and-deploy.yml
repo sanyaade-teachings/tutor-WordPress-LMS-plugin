@@ -26,11 +26,6 @@ jobs:
       - name: Install Composer Dependencies in Paypal Directory
         run: composer install --no-dev --working-dir=./ecommerce/PaymentGateways/Paypal
 
-      - name: Clone tutor-droip repository
-        run: |
-          if [ ! -d "tutor-droip" ]; then
-            git clone https://github.com/jshossen/tutor-droip.git tutor-droip
-          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
