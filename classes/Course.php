@@ -794,9 +794,7 @@ class Course extends Tutor_Base {
 	 *
 	 * @since 3.0.0
 	 *
-	 * @since 3.2.0
-	 *
-	 * Refactor the arguments & response as per new design
+	 * @since 3.2.0 Refactor the arguments & response as per new design
 	 *
 	 * @return void
 	 */
@@ -846,7 +844,7 @@ class Course extends Tutor_Base {
 		}
 
 		$this->json_response(
-			__( 'Course list retrieved successfully!', 'tutor-pro' ),
+			__( 'Course list retrieved successfully!', 'tutor' ),
 			$response
 		);
 	}
