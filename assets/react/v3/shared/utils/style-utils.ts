@@ -1,12 +1,4 @@
-import {
-  borderRadius,
-  colorTokens,
-  containerMaxWidth,
-  fontFamily,
-  fontSize,
-  shadow,
-  spacing,
-} from '@TutorShared/config/styles';
+import { borderRadius, colorTokens, containerMaxWidth, fontSize, shadow, spacing } from '@TutorShared/config/styles';
 import { css } from '@emotion/react';
 import { typography } from '../config/typography';
 
@@ -33,7 +25,8 @@ export const createGlobalCss = () => css`
   }
   body {
     margin: 0;
-    font-family: ${fontFamily.sfProDisplay};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+      'Helvetica Neue', sans-serif;
   }
 
   main {
@@ -263,7 +256,6 @@ export const styleUtils = {
     padding: 0;
     margin: 0;
     text-align: inherit;
-    font-family: ${fontFamily.sfProDisplay};
     cursor: pointer;
   `,
   cardInnerSection: css`
@@ -510,7 +502,6 @@ export const styleUtils = {
     padding: 0;
     margin: 0;
     text-align: inherit;
-    font-family: ${fontFamily.sfProDisplay};
     cursor: pointer;
     height: 32px;
     width: 32px;
@@ -542,7 +533,6 @@ export const styleUtils = {
     padding: 0;
     margin: 0;
     text-align: inherit;
-    font-family: ${fontFamily.sfProDisplay};
     cursor: grab;
     display: flex;
     align-items: center;
@@ -577,7 +567,6 @@ export const styleUtils = {
       padding: 0;
       margin: 0;
       text-align: inherit;
-      font-family: ${fontFamily.sfProDisplay};
       ${typography.caption()};
       flex: 1;
       color: ${colorTokens.text.subdued};
