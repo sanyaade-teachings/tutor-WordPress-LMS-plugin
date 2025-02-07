@@ -10,13 +10,13 @@
 
 namespace TUTOR;
 
-use Tutor\Cache\TutorCache;
-use Tutor\Ecommerce\Ecommerce;
 use Tutor\Ecommerce\Tax;
-use Tutor\Helpers\HttpHelper;
-use Tutor\Helpers\QueryHelper;
-use Tutor\Models\CourseModel;
+use Tutor\Cache\TutorCache;
 use Tutor\Models\QuizModel;
+use Tutor\Helpers\HttpHelper;
+use Tutor\Models\CourseModel;
+use Tutor\Ecommerce\Ecommerce;
+use Tutor\Helpers\QueryHelper;
 use Tutor\Traits\JsonResponse;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10441,5 +10441,15 @@ class Utils {
 		}
 
 		return (object) $info;
+	}
+
+	public function subscription_categories()
+	{
+		return array(
+			'all'           => __('All', 'tutor-pro'),
+			'single_course' => __('Single Course Subscription', 'tutor-pro'),
+			'bundles'       => __('Bundles Subscriptions', 'tutor-pro'),
+			'memberships'   => __('Only Memberships', 'tutor-pro'),
+		);
 	}
 }
