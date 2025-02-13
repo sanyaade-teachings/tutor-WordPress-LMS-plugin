@@ -3353,7 +3353,7 @@ class Utils {
 			if ( 5 === (int) $rating ) {
 				$max_rating = 5;
 			}
-			$rating_having = $wpdb->prepare( " HAVING rating >= %d AND rating <= %d ", $rating, $max_rating );
+			$rating_having = $wpdb->prepare( ' HAVING rating >= %d AND rating <= %d ', $rating, $max_rating );
 		}
 
 		/**
@@ -6839,7 +6839,7 @@ class Utils {
 	 * @since 1.3.4
 	 * @since 3.0.0 hide admin bar support and location param added.
 	 *
-	 * @param int $course_id course id.
+	 * @param int   $course_id course id.
 	 * @param mixed $location possible values `null|backend|frontend`.
 	 *
 	 * @return false|string
@@ -7077,9 +7077,9 @@ class Utils {
 			$status = '';
 		}
 
-		$status_query = "";
+		$status_query = '';
 		if ( is_array( $status ) && count( $status ) ) {
-			$in_clause    =  QueryHelper::prepare_in_clause( $status );
+			$in_clause    = QueryHelper::prepare_in_clause( $status );
 			$status_query = "AND enrol.post_status IN ({$in_clause})";
 		} elseif ( ! empty( $status ) ) {
 			$status_query = "AND enrol.post_status = '$status' ";
@@ -7142,9 +7142,9 @@ class Utils {
 			$status = '';
 		}
 
-		$status_query = "";
+		$status_query = '';
 		if ( is_array( $status ) && count( $status ) ) {
-			$in_clause    =  QueryHelper::prepare_in_clause( $status );
+			$in_clause    = QueryHelper::prepare_in_clause( $status );
 			$status_query = "AND enrol.post_status IN ({$in_clause})";
 		} elseif ( ! empty( $status ) ) {
 			$status_query = "AND enrol.post_status = '$status' ";
@@ -10319,7 +10319,7 @@ class Utils {
 		if ( 'builder' === get_post_meta( $post_id, '_elementor_edit_mode', true ) ) {
 			$name = 'elementor';
 		}
-		 
+
 		if ( 'droip' === get_post_meta( $post_id, 'droip_editor_mode', true ) ) {
 			$name = 'droip';
 		}
@@ -10443,13 +10443,26 @@ class Utils {
 		return (object) $info;
 	}
 
-	public function subscription_categories()
-	{
+	public function subscription_categories(): array {
 		return array(
-			'all'           => __('All', 'tutor-pro'),
-			'single_course' => __('Single Course Subscription', 'tutor-pro'),
-			'bundles'       => __('Bundles Subscriptions', 'tutor-pro'),
-			'memberships'   => __('Only Memberships', 'tutor-pro'),
+			'all'           => __( 'All', 'tutor-pro' ),
+			'single_course' => __( 'Single Course Subscription', 'tutor-pro' ),
+			'bundles'       => __( 'Bundles Subscriptions', 'tutor-pro' ),
+			'memberships'   => __( 'Only Memberships', 'tutor-pro' ),
 		);
+	}
+
+	public function filter_by_subscriptions_type( $subscriptions, $type ) {
+
+		if ( ! empty( $subscriptions ) ) {
+			return array_filter(
+				$subscriptions,
+				function ( $subscription ) use ( $type ) {
+					return $type === $subscription->subscription_type;
+				}
+			);
+		}
+
+		return array();
 	}
 }

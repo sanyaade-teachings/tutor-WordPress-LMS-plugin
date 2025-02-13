@@ -34,7 +34,6 @@ class Settings {
 		add_filter( 'tutor_option_input', array( $this, 'format_payment_settings_data' ) );
 		add_action( 'wp_ajax_tutor_payment_settings', array( $this, 'ajax_get_tutor_payment_settings' ) );
 		add_action( 'wp_ajax_tutor_payment_gateways', array( $this, 'ajax_tutor_payment_gateways' ) );
-
 	}
 
 	/**
@@ -279,7 +278,7 @@ class Settings {
 	 *
 	 * @return boolean
 	 */
-	public static function is_active( string $gateway ) : bool {
+	public static function is_active( string $gateway ): bool {
 		$payments = tutor_utils()->get_option( OptionKeys::PAYMENT_SETTINGS );
 		$payments = json_decode( stripslashes( $payments ) );
 
@@ -491,5 +490,12 @@ class Settings {
 		}
 
 		return $config_fields;
+	}
+
+	public static function get_membership_settings() {
+		$settings = tutor_utils()->get_option( OptionKeys::MEMBERSHIP_SETTINGS );
+		$settings = json_decode( stripslashes( $settings ), true );
+
+		return $settings;
 	}
 }
