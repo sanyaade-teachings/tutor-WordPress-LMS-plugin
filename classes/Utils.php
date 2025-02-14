@@ -10442,27 +10442,4 @@ class Utils {
 
 		return (object) $info;
 	}
-
-	public function subscription_categories(): array {
-		return array(
-			'all'           => __( 'All', 'tutor-pro' ),
-			'single_course' => __( 'Single Course Subscription', 'tutor-pro' ),
-			'bundles'       => __( 'Bundles Subscriptions', 'tutor-pro' ),
-			'memberships'   => __( 'Only Memberships', 'tutor-pro' ),
-		);
-	}
-
-	public function filter_by_subscriptions_type( $subscriptions, $type ) {
-
-		if ( ! empty( $subscriptions ) ) {
-			return array_filter(
-				$subscriptions,
-				function ( $subscription ) use ( $type ) {
-					return $type === $subscription->subscription_type;
-				}
-			);
-		}
-
-		return array();
-	}
 }
